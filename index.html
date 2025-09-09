@@ -58,8 +58,8 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
             z-index: -1;
             animation: nebulaMove 20s ease-in-out infinite;
         }
@@ -412,6 +412,24 @@
         .article-excerpt {
             color: #ccc;
             line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .article-github-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .article-github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
         }
 
         /* 项目作品集 */
@@ -435,10 +453,8 @@
             position: relative;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
-            border-color: #00d4ff;
+        .project-card {
+            transition: all 0.3s ease;
         }
 
         .project-image {
@@ -479,6 +495,18 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
+        }
+
+        .project-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card-link:hover .project-card {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
         }
 
         /* 响应式设计 */
@@ -590,396 +618,411 @@
     </style>
 </head>
 <body>
-<!-- 深空背景 -->
-<div class="space-background"></div>
-<div class="stars" id="stars"></div>
-<div class="nebula"></div>
+    <!-- 深空背景 -->
+    <div class="space-background"></div>
+    <div class="stars" id="stars"></div>
+    <div class="nebula"></div>
 
-<!-- 导航栏 -->
-<nav class="navbar" id="navbar">
-    <div class="nav-container">
-        <div class="logo">个人主页</div>
-        <ul class="nav-links">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#skills">技能</a></li>
-            <li><a href="#articles">文章</a></li>
-            <li><a href="#projects">项目</a></li>
-        </ul>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">个人主页</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#articles">文章</a></li>
+                <li><a href="#projects">项目</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 个人简介区域 -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">欢迎来到我的太空</h1>
+                <p class="hero-subtitle">全栈开发工程师 | 技术爱好者 | 创新探索者</p>
+                <p class="hero-description">
+                    在代码的宇宙中探索，用技术的力量创造无限可能。
+                    专注于服务端开发、golang、Java、python持续学习中，
+                    致力于构建出最漂亮优雅的代码。
+                </p>
+                <a href="#skills" class="cta-button">探索我的技能</a>
+            </div>
+        </section>
+
+        <!-- 搜索功能 -->
+        <section class="search-section">
+            <div class="container">
+                <h2 class="section-title">搜索内容</h2>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="搜索文章、项目或技能..." id="searchInput">
+                    <button class="search-button" id="searchButton">🔍</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能展示区域 -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">技能展示</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">⚙️</div>
+                        <h3 class="skill-name">后端开发</h3>
+                        <p>Golang,Java,Python</p>
+                        <div class="skill-level">
+                            <div class="skill-progress" data-level="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">⚛️</div>
+                        <h3 class="skill-name">前端开发</h3>
+                        <p>Vue,HTML5, CSS3, JavaScript</p>
+                        <div class="skill-level">
+                            <div class="skill-progress" data-level="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🤖</div>
+                        <h3 class="skill-name">LLM大模型
+                        </h3>
+                        <p>SpringAI,Eino,Langchain</p>
+                        <div class="skill-level">
+                            <div class="skill-progress" data-level="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">☁️</div>
+                        <h3 class="skill-name">云服务</h3>
+                        <p>Docker, Kubernetes, 微服务</p>
+                        <div class="skill-level">
+                            <div class="skill-progress" data-level="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📱</div>
+                        <h3 class="skill-name">中间件</h3>
+                        <p>MySQL, Redis, RabbitMQ, ElasticSearch</p>
+                        <div class="skill-level">
+                            <div class="skill-progress" data-level="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🎨</div>
+                        <h3 class="skill-name">计算机基础</h3>
+                        <p>计算机网络, 数据结构与算法, 操作系统</p>
+                        <div class="skill-level">
+                            <div class="skill-progress" data-level="65"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技术文章归档 -->
+        <section id="articles" class="articles-section">
+            <div class="container">
+                <h2 class="section-title">技术文章归档</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="article-date">2024年3月15日</div>
+                            <h3 class="article-title">深入理解React Hooks原理</h3>
+                            <p class="article-excerpt">本文深入探讨了React Hooks的工作原理，包括useState、useEffect等核心Hook的实现机制，以及如何自定义Hook来复用逻辑...</p>
+                            <a href="https://github.com/example/react-hooks-demo" target="_blank" class="article-github-link">🔗 GitHub项目</a>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="article-date">2024年2月28日</div>
+                            <h3 class="article-title">微服务架构设计最佳实践</h3>
+                            <p class="article-excerpt">分享在微服务架构设计中的经验总结，包括服务拆分原则、通信机制、容错处理、监控告警等关键环节的实践经验...</p>
+                            <a href="https://github.com/example/microservice-demo" target="_blank" class="article-github-link">🔗 GitHub项目</a>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="article-date">2024年1月20日</div>
+                            <h3 class="article-title">AI大模型在代码生成中的应用</h3>
+                            <p class="article-excerpt">探讨AI大模型在代码生成领域的应用现状，分析其优势和局限性，并展望未来发展趋势和潜在机遇...</p>
+                            <a href="https://github.com/example/ai-code-generation" target="_blank" class="article-github-link">🔗 GitHub项目</a>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="article-date">2023年12月10日</div>
+                            <h3 class="article-title">前端性能优化实战指南</h3>
+                            <p class="article-excerpt">从多个维度详细介绍前端性能优化的策略和方法，包括代码分割、懒加载、缓存策略、图片优化等实用技巧...</p>
+                            <a href="https://github.com/example/frontend-optimization" target="_blank" class="article-github-link">🔗 GitHub项目</a>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="article-date">2023年11月5日</div>
+                            <h3 class="article-title">云原生应用开发之路</h3>
+                            <p class="article-excerpt">介绍云原生应用的核心概念和开发模式，包括容器化、编排、服务网格等技术的实践应用和架构设计...</p>
+                            <a href="https://github.com/example/cloud-native-apps" target="_blank" class="article-github-link">🔗 GitHub项目</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目作品集 -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">项目作品集</h2>
+                <div class="projects-grid">
+                    <a href="https://github.com/enjoykanyu/chat_serve" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image">🚀</div>
+                            <div class="project-content">
+                                <h3 class="project-title">仿微信聊天</h3>
+                                <p class="project-description">本项目为即时聊天服务的后端，由Springboot+vue3+mysql+websocket实现，功能参考微信等聊天软件设计 技术栈 后端 选用编程语言 Java web框架SpringBoot db MySQL 持久存储 nosql 缓存 Redis 全双工通信框架 WebSocket 前端 前端框架Vue3 Typescript UI样式 Css、ElementPlus 网页路由 vue-router 全双工通信框架Websocket 功能概况 登录注册模块 加好友 好友搜索与列表 发起群聊 消息单聊与群聊 群成员列表等模块</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">SpringBoot</span>
+                                    <span class="project-tag">Websocket</span>
+                                    <span class="project-tag">MySQL</span>
+                                    <span class="project-tag">Redis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/enjoykanyu/vision_world_web" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image">📊</div>
+                            <div class="project-content">
+                                <h3 class="project-title">万物互动视界项目</h3>
+                                <p class="project-description">视界
+                                    go+gin+grpc+redis+mysql+eino</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Vue.js</span>
+                                    <span class="project-tag">Golang</span>
+                                    <span class="project-tag">Gin</span>
+                                    <span class="project-tag">gRpc</span>
+                                    <span class="project-tag">MySQL</span>
+                                    <span class="project-tag">Redis</span>
+                                    <span class="project-tag">RabbitMQ</span>
+                                    <span class="project-tag">ElasticSearch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project-card">
+                        <div class="project-image">🤖</div>
+                        <div class="project-content">
+                            <h3 class="project-title">智能客服机器人</h3>
+                            <p class="project-description">基于NLP的智能客服机器人，支持多轮对话和知识库问答。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">TensorFlow</span>
+                                <span class="project-tag">Flask</span>
+                                <span class="project-tag">NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">🛒</div>
+                        <div class="project-content">
+                            <h3 class="project-title">微服务电商平台</h3>
+                            <p class="project-description">基于微服务架构的电商平台，支持高并发和弹性扩展。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Spring Boot</span>
+                                <span class="project-tag">Docker</span>
+                                <span class="project-tag">Kubernetes</span>
+                                <span class="project-tag">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">📱</div>
+                        <div class="project-content">
+                            <h3 class="project-title">跨平台移动应用</h3>
+                            <p class="project-description">使用React Native开发的跨平台移动应用，一套代码多端运行。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React Native</span>
+                                <span class="project-tag">TypeScript</span>
+                                <span class="project-tag">Firebase</span>
+                                <span class="project-tag">Redux</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">🔐</div>
+                        <div class="project-content">
+                            <h3 class="project-title">区块链投票系统</h3>
+                            <p class="project-description">基于区块链技术的去中心化投票系统，确保投票的透明性和不可篡改性。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Solidity</span>
+                                <span class="project-tag">Web3.js</span>
+                                <span class="project-tag">Ethereum</span>
+                                <span class="project-tag">IPFS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 文章预览模态框 -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-date" id="modalDate"></div>
+            <div class="modal-content-text" id="modalContent"></div>
+        </div>
     </div>
-</nav>
 
-<!-- 主要内容 -->
-<main class="main-content">
-    <!-- 个人简介区域 -->
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">欢迎来到我的太空</h1>
-            <p class="hero-subtitle">全栈开发工程师 | 技术爱好者 | 创新探索者</p>
-            <p class="hero-description">
-                在代码的宇宙中探索，用技术的力量创造无限可能。
-                专注于前端开发、后端架构和人工智能领域，
-                致力于构建优雅、高效的数字解决方案。
-            </p>
-            <a href="#skills" class="cta-button">探索我的技能</a>
-        </div>
-    </section>
-
-    <!-- 搜索功能 -->
-    <section class="search-section">
-        <div class="container">
-            <h2 class="section-title">搜索内容</h2>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="搜索文章、项目或技能..." id="searchInput">
-                <button class="search-button" id="searchButton">🔍</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 技能展示区域 -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title">技能展示</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">⚛️</div>
-                    <h3 class="skill-name">前端开发</h3>
-                    <p>React, Vue, Angular, HTML5, CSS3, JavaScript</p>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="90"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">⚙️</div>
-                    <h3 class="skill-name">后端开发</h3>
-                    <p>Node.js, Python, Java, Go, 数据库设计</p>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="85"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
-                    <h3 class="skill-name">人工智能</h3>
-                    <p>机器学习, 深度学习, 自然语言处理</p>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="75"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">☁️</div>
-                    <h3 class="skill-name">云服务</h3>
-                    <p>AWS, Azure, Docker, Kubernetes, 微服务</p>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="80"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📱</div>
-                    <h3 class="skill-name">移动开发</h3>
-                    <p>React Native, Flutter, iOS, Android</p>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="70"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎨</div>
-                    <h3 class="skill-name">UI/UX设计</h3>
-                    <p>Figma, Adobe XD, 用户体验设计</p>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="65"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 技术文章归档 -->
-    <section id="articles" class="articles-section">
-        <div class="container">
-            <h2 class="section-title">技术文章归档</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="article-date">2024年3月15日</div>
-                        <h3 class="article-title">深入理解React Hooks原理</h3>
-                        <p class="article-excerpt">本文深入探讨了React Hooks的工作原理，包括useState、useEffect等核心Hook的实现机制，以及如何自定义Hook来复用逻辑...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="article-date">2024年2月28日</div>
-                        <h3 class="article-title">微服务架构设计最佳实践</h3>
-                        <p class="article-excerpt">分享在微服务架构设计中的经验总结，包括服务拆分原则、通信机制、容错处理、监控告警等关键环节的实践经验...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="article-date">2024年1月20日</div>
-                        <h3 class="article-title">AI大模型在代码生成中的应用</h3>
-                        <p class="article-excerpt">探讨AI大模型在代码生成领域的应用现状，分析其优势和局限性，并展望未来发展趋势和潜在机遇...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="article-date">2023年12月10日</div>
-                        <h3 class="article-title">前端性能优化实战指南</h3>
-                        <p class="article-excerpt">从多个维度详细介绍前端性能优化的策略和方法，包括代码分割、懒加载、缓存策略、图片优化等实用技巧...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="article-date">2023年11月5日</div>
-                        <h3 class="article-title">云原生应用开发之路</h3>
-                        <p class="article-excerpt">介绍云原生应用的核心概念和开发模式，包括容器化、编排、服务网格等技术的实践应用和架构设计...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 项目作品集 -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">项目作品集</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">🚀</div>
-                    <div class="project-content">
-                        <h3 class="project-title">智能任务管理系统</h3>
-                        <p class="project-description">基于AI的智能任务管理和优先级排序系统，支持团队协作和进度跟踪。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">AI</span>
-                            <span class="project-tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">📊</div>
-                    <div class="project-content">
-                        <h3 class="project-title">实时数据可视化平台</h3>
-                        <p class="project-description">企业级实时数据可视化平台，支持多种图表类型和自定义仪表板。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">D3.js</span>
-                            <span class="project-tag">WebSocket</span>
-                            <span class="project-tag">Redis</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🤖</div>
-                    <div class="project-content">
-                        <h3 class="project-title">智能客服机器人</h3>
-                        <p class="project-description">基于NLP的智能客服机器人，支持多轮对话和知识库问答。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">TensorFlow</span>
-                            <span class="project-tag">Flask</span>
-                            <span class="project-tag">NLP</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🛒</div>
-                    <div class="project-content">
-                        <h3 class="project-title">微服务电商平台</h3>
-                        <p class="project-description">基于微服务架构的电商平台，支持高并发和弹性扩展。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Spring Boot</span>
-                            <span class="project-tag">Docker</span>
-                            <span class="project-tag">Kubernetes</span>
-                            <span class="project-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">📱</div>
-                    <div class="project-content">
-                        <h3 class="project-title">跨平台移动应用</h3>
-                        <p class="project-description">使用React Native开发的跨平台移动应用，一套代码多端运行。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React Native</span>
-                            <span class="project-tag">TypeScript</span>
-                            <span class="project-tag">Firebase</span>
-                            <span class="project-tag">Redux</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🔐</div>
-                    <div class="project-content">
-                        <h3 class="project-title">区块链投票系统</h3>
-                        <p class="project-description">基于区块链技术的去中心化投票系统，确保投票的透明性和不可篡改性。</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Solidity</span>
-                            <span class="project-tag">Web3.js</span>
-                            <span class="project-tag">Ethereum</span>
-                            <span class="project-tag">IPFS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<!-- 文章预览模态框 -->
-<div id="articleModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <div class="modal-date" id="modalDate"></div>
-        <div class="modal-content-text" id="modalContent"></div>
-    </div>
-</div>
-
-<script>
-    // 生成星星背景
-    function createStars() {
-        const starsContainer = document.getElementById('stars');
-        const numberOfStars = 200;
-
-        for (let i = 0; i < numberOfStars; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
-    }
-
-    // 导航栏滚动效果
-    function handleNavbarScroll() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-
-    // 平滑滚动
-    function smoothScroll() {
-        const links = document.querySelectorAll('a[href^="#"]');
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }
-
-    // 技能进度条动画
-    function animateSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-progress');
-        skillBars.forEach(bar => {
-            const level = bar.getAttribute('data-level');
-            setTimeout(() => {
-                bar.style.width = level + '%';
-            }, 500);
-        });
-    }
-
-    // 时间线项目动画
-    function animateTimelineItems() {
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        timelineItems.forEach(item => {
-            observer.observe(item);
-        });
-    }
-
-    // 搜索功能
-    function setupSearch() {
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-
-        function performSearch() {
-            const searchTerm = searchInput.value.toLowerCase();
-            if (searchTerm) {
-                // 这里可以实现实际的搜索逻辑
-                alert('搜索功能: ' + searchTerm);
+    <script>
+        // 生成星星背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 200;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
             }
         }
 
-        searchButton.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
+        // 导航栏滚动效果
+        function handleNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        });
-    }
+        }
 
-    // 文章预览模态框
-    function setupArticleModal() {
-        const modal = document.getElementById('articleModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDate = document.getElementById('modalDate');
-        const modalContent = document.getElementById('modalContent');
-        const closeBtn = document.querySelector('.close');
-
-        const timelineContents = document.querySelectorAll('.timeline-content');
-        timelineContents.forEach(content => {
-            content.addEventListener('click', function() {
-                const title = this.querySelector('.article-title').textContent;
-                const date = this.querySelector('.article-date').textContent;
-                const excerpt = this.querySelector('.article-excerpt').textContent;
-
-                modalTitle.textContent = title;
-                modalDate.textContent = date;
-                modalContent.textContent = excerpt + ' 这里是文章的详细内容...';
-                modal.style.display = 'block';
+        // 平滑滚动
+        function smoothScroll() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        });
+        }
 
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
+        // 技能进度条动画
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const level = bar.getAttribute('data-level');
+                setTimeout(() => {
+                    bar.style.width = level + '%';
+                }, 500);
+            });
+        }
 
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
+        // 时间线项目动画
+        function animateTimelineItems() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // 搜索功能
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                if (searchTerm) {
+                    // 这里可以实现实际的搜索逻辑
+                    alert('搜索功能: ' + searchTerm);
+                }
+            }
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        // 文章预览模态框
+        function setupArticleModal() {
+            const modal = document.getElementById('articleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDate = document.getElementById('modalDate');
+            const modalContent = document.getElementById('modalContent');
+            const closeBtn = document.querySelector('.close');
+            
+            const timelineContents = document.querySelectorAll('.timeline-content');
+            timelineContents.forEach(content => {
+                content.addEventListener('click', function() {
+                    const title = this.querySelector('.article-title').textContent;
+                    const date = this.querySelector('.article-date').textContent;
+                    const excerpt = this.querySelector('.article-excerpt').textContent;
+                    
+                    modalTitle.textContent = title;
+                    modalDate.textContent = date;
+                    modalContent.textContent = excerpt + ' 这里是文章的详细内容...';
+                    modal.style.display = 'block';
+                });
+            });
+            
+            closeBtn.addEventListener('click', function() {
                 modal.style.display = 'none';
-            }
-        });
-    }
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
 
-    // 初始化所有功能
-    function init() {
-        createStars();
-        smoothScroll();
-        animateSkillBars();
-        animateTimelineItems();
-        setupSearch();
-        setupArticleModal();
+        // 初始化所有功能
+        function init() {
+            createStars();
+            smoothScroll();
+            animateSkillBars();
+            animateTimelineItems();
+            setupSearch();
+            setupArticleModal();
+            
+            // 滚动事件监听
+            window.addEventListener('scroll', handleNavbarScroll);
+        }
 
-        // 滚动事件监听
-        window.addEventListener('scroll', handleNavbarScroll);
-    }
-
-    // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', init);
-</script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 </html>
