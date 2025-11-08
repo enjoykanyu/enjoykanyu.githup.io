@@ -369,6 +369,7 @@
             width: 45%;
             position: relative;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .timeline-content:hover {
@@ -573,6 +574,8 @@
             max-width: 800px;
             position: relative;
             animation: modalFadeIn 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         @keyframes modalFadeIn {
@@ -614,6 +617,109 @@
         .modal-content-text {
             color: #ccc;
             line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        /* 加载状态 */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #00d4ff;
+        }
+
+        /* Markdown内容样式 */
+        .modal-content-text h1 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .modal-content-text h2 {
+            color: #ff00ff;
+            font-size: 1.5rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .modal-content-text h3 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-content-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-content-text ul, .modal-content-text ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .modal-content-text li {
+            margin-bottom: 5px;
+        }
+
+        .modal-content-text code {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .modal-content-text pre {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .modal-content-text pre code {
+            background: none;
+            padding: 0;
+            color: #ccc;
+        }
+
+        .modal-content-text blockquote {
+            border-left: 3px solid #00d4ff;
+            padding-left: 15px;
+            margin: 20px 0;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .modal-content-text table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .modal-content-text th, .modal-content-text td {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .modal-content-text th {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+        }
+
+        .modal-content-text a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .modal-content-text a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -725,52 +831,8 @@
         <section id="articles" class="articles-section">
             <div class="container">
                 <h2 class="section-title">技术文章归档</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="article-date">2024年3月15日</div>
-                            <h3 class="article-title">深入理解React Hooks原理</h3>
-                            <p class="article-excerpt">本文深入探讨了React Hooks的工作原理，包括useState、useEffect等核心Hook的实现机制，以及如何自定义Hook来复用逻辑...</p>
-                            <a href="https://github.com/example/react-hooks-demo" target="_blank" class="article-github-link">🔗 GitHub项目</a>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="article-date">2024年2月28日</div>
-                            <h3 class="article-title">微服务架构设计最佳实践</h3>
-                            <p class="article-excerpt">分享在微服务架构设计中的经验总结，包括服务拆分原则、通信机制、容错处理、监控告警等关键环节的实践经验...</p>
-                            <a href="https://github.com/example/microservice-demo" target="_blank" class="article-github-link">🔗 GitHub项目</a>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="article-date">2024年1月20日</div>
-                            <h3 class="article-title">AI大模型在代码生成中的应用</h3>
-                            <p class="article-excerpt">探讨AI大模型在代码生成领域的应用现状，分析其优势和局限性，并展望未来发展趋势和潜在机遇...</p>
-                            <a href="https://github.com/example/ai-code-generation" target="_blank" class="article-github-link">🔗 GitHub项目</a>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="article-date">2023年12月10日</div>
-                            <h3 class="article-title">前端性能优化实战指南</h3>
-                            <p class="article-excerpt">从多个维度详细介绍前端性能优化的策略和方法，包括代码分割、懒加载、缓存策略、图片优化等实用技巧...</p>
-                            <a href="https://github.com/example/frontend-optimization" target="_blank" class="article-github-link">🔗 GitHub项目</a>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="article-date">2023年11月5日</div>
-                            <h3 class="article-title">云原生应用开发之路</h3>
-                            <p class="article-excerpt">介绍云原生应用的核心概念和开发模式，包括容器化、编排、服务网格等技术的实践应用和架构设计...</p>
-                            <a href="https://github.com/example/cloud-native-apps" target="_blank" class="article-github-link">🔗 GitHub项目</a>
-                        </div>
-                    </div>
+                <div class="timeline" id="blogTimeline">
+                    <div class="loading">正在加载博客文章...</div>
                 </div>
             </div>
         </section>
@@ -881,6 +943,9 @@
             <div class="modal-content-text" id="modalContent"></div>
         </div>
     </div>
+
+    <!-- 引入marked.js用于Markdown渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script>
         // 生成星星背景
@@ -1008,14 +1073,248 @@
             });
         }
 
+        // 加载博客文章
+        async function loadBlogPosts() {
+            const blogTimeline = document.getElementById('blogTimeline');
+            
+            try {
+                // 获取博客目录中的所有.md文件
+                const blogFiles = await getBlogFiles();
+                
+                if (blogFiles.length === 0) {
+                    blogTimeline.innerHTML = '<div class="loading">暂无博客文章</div>';
+                    return;
+                }
+                
+                // 按修改时间排序（最新的在前）
+                blogFiles.sort((a, b) => new Date(b.modifiedTime) - new Date(a.modifiedTime));
+                
+                // 生成时间线HTML
+                let timelineHTML = '';
+                blogFiles.forEach((file, index) => {
+                    const createdDate = new Date(file.createdTime);
+                    const modifiedDate = new Date(file.modifiedTime);
+                    const createdDateStr = `${createdDate.getFullYear()}年${createdDate.getMonth() + 1}月${createdDate.getDate()}日`;
+                    const modifiedDateStr = `${modifiedDate.getFullYear()}年${modifiedDate.getMonth() + 1}月${modifiedDate.getDate()}日`;
+                    
+                    // 使用修改日期作为文章日期
+                    const articleDate = createdDateStr;
+                    
+                    timelineHTML += `
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content" data-file="${file.name}">
+                                <div class="article-date">${articleDate}</div>
+                                <h3 class="article-title">${file.title}</h3>
+                                <p class="article-excerpt">${file.excerpt}</p>
+                                <a href="#" class="article-github-link" onclick="event.preventDefault(); viewArticle('${file.name}')">📖 阅读全文</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                blogTimeline.innerHTML = timelineHTML;
+                
+                // 重新设置文章点击事件
+                setupArticleClickEvents();
+                
+                // 重新启动时间线动画
+                animateTimelineItems();
+                
+            } catch (error) {
+                console.error('加载博客文章失败:', error);
+                blogTimeline.innerHTML = '<div class="loading">加载博客文章失败</div>';
+            }
+        }
+
+        // 获取博客文件列表
+        async function getBlogFiles() {
+            // 获取博客目录中的所有.md文件
+            try {
+                // 获取博客目录中的所有.md文件
+                const response = await fetch('./blog/');
+                const html = await response.text();
+                
+                // 解析HTML，提取所有.md文件链接
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const links = doc.querySelectorAll('a[href$=".md"]');
+                
+                // 获取文件信息（包含Git提交时间）
+                let filesInfo = [];
+                try {
+                    const infoResponse = await fetch('./blog/files-info.json');
+                    if (infoResponse.ok) {
+                        filesInfo = await infoResponse.json();
+                    }
+                } catch (error) {
+                    console.log('无法获取文件信息:', error);
+                }
+                
+                const blogFiles = [];
+                
+                // 遍历所有.md文件链接
+                for (const link of links) {
+                    const fileName = link.getAttribute('href');
+                    if (!fileName.startsWith('.') && fileName.endsWith('.md')) {
+                        try {
+                            // 获取文件内容
+                            const fileResponse = await fetch(`./blog/${fileName}`);
+                            const fileContent = await fileResponse.text();
+                            
+                            // 解析文件内容，提取标题和摘要
+                            const titleMatch = fileContent.match(/^#\s+(.+)$/m);
+                            const title = titleMatch ? titleMatch[1] : fileName.replace('.md', '');
+                            
+                            // 获取第一段作为摘要
+                            const excerptMatch = fileContent.match(/^#\s+.+$/m);
+                            let excerpt = '';
+                            if (excerptMatch) {
+                                const startIndex = fileContent.indexOf(excerptMatch[0]) + excerptMatch[0].length;
+                                const endIndex = fileContent.indexOf('\n##', startIndex);
+                                excerpt = fileContent.substring(startIndex, endIndex > -1 ? endIndex : startIndex + 150)
+                                    .replace(/\n/g, ' ')
+                                    .trim()
+                                    .substring(0, 150) + '...';
+                            }
+                            
+                            // 从files-info.json中获取Git提交时间
+                            let createdTime = new Date().toISOString(); // 默认使用当前时间
+                            const fileInfo = filesInfo.find(info => info.name === fileName);
+                            if (fileInfo) {
+                                createdTime = fileInfo.createdTime;
+                            } else {
+                                // 如果没有找到文件信息，尝试从文件头部获取
+                                const dateMatch = fileContent.match(/(?:created|date):\s*(.+)/i);
+                                createdTime = dateMatch ? new Date(dateMatch[1]).toISOString() : createdTime;
+                            }
+                            
+                            // 添加到文件列表
+                            blogFiles.push({
+                                name: fileName,
+                                title: title,
+                                excerpt: excerpt || '暂无摘要',
+                                createdTime: createdTime,
+                                modifiedTime: createdTime,
+                                content: fileContent
+                            });
+                        } catch (error) {
+                            console.error(`无法读取文件 ${fileName}:`, error);
+                        }
+                    }
+                }
+                
+                return blogFiles;
+            } catch (error) {
+                console.error('获取博客文件列表失败:', error);
+                // 如果无法获取真实文件，返回模拟数据
+                return [
+                    {
+                        name: 'docker.md',
+                        title: 'Docker容器技术入门指南',
+                        excerpt: 'Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化...',
+                        createdTime: '2025-11-08T11:54:00Z',
+                        modifiedTime: '2025-11-08T11:54:00Z'
+                    }
+                ];
+            }
+        }
+
+        // 设置文章点击事件
+        function setupArticleClickEvents() {
+            const timelineContents = document.querySelectorAll('.timeline-content');
+            timelineContents.forEach(content => {
+                content.addEventListener('click', function(e) {
+                    // 如果点击的是链接，不触发模态框
+                    if (e.target.classList.contains('article-github-link')) {
+                        return;
+                    }
+                    
+                    const fileName = this.getAttribute('data-file');
+                    viewArticle(fileName);
+                });
+            });
+        }
+
+        // 查看文章内容
+        async function viewArticle(fileName) {
+            const modal = document.getElementById('articleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDate = document.getElementById('modalDate');
+            const modalContent = document.getElementById('modalContent');
+            
+            try {
+                // 显示加载状态
+                modalTitle.textContent = '加载中...';
+                modalDate.textContent = '';
+                modalContent.textContent = '正在加载文章内容...';
+                modal.style.display = 'block';
+                
+                // 获取文章内容
+                const article = await getArticleContent(fileName);
+                
+                modalTitle.textContent = article.title;
+                modalDate.textContent = `发布于: ${article.createdDate} | 更新于: ${article.modifiedDate}`;
+                // 使用marked.js渲染Markdown内容
+                modalContent.innerHTML = marked.parse(article.content);
+                
+            } catch (error) {
+                console.error('加载文章内容失败:', error);
+                modalTitle.textContent = '加载失败';
+                modalDate.textContent = '';
+                modalContent.textContent = '无法加载文章内容，请稍后再试。';
+            }
+        }
+
+        // 获取文章内容
+        async function getArticleContent(fileName) {
+            try {
+                // 尝试获取真实的文章内容
+                const response = await fetch(`./blog/${fileName}`);
+                const fileContent = await response.text();
+                
+                // 解析文件内容，提取标题
+                const titleMatch = fileContent.match(/^#\s+(.+)$/m);
+                const title = titleMatch ? titleMatch[1] : fileName.replace('.md', '');
+                
+                // 获取文件头部信息（如果有的话）
+                const dateMatch = fileContent.match(/(?:created|date):\s*(.+)/i);
+                const createdDate = dateMatch ? new Date(dateMatch[1]) : new Date('2024-11-08');
+                const createdDateStr = `${createdDate.getFullYear()}年${createdDate.getMonth() + 1}月${createdDate.getDate()}日`;
+                
+                // 获取修改时间信息（如果有的话）
+                const modifiedMatch = fileContent.match(/(?:modified|updated):\s*(.+)/i);
+                const modifiedDate = modifiedMatch ? new Date(modifiedMatch[1]) : createdDate;
+                const modifiedDateStr = `${modifiedDate.getFullYear()}年${modifiedDate.getMonth() + 1}月${modifiedDate.getDate()}日`;
+                
+                return {
+                    title: title,
+                    createdDate: createdDateStr,
+                    modifiedDate: modifiedDateStr,
+                    content: fileContent
+                };
+            } catch (error) {
+                console.error('获取文章内容失败:', error);
+                
+                // 如果获取失败，返回错误信息
+                return {
+                    title: '加载失败',
+                    createdDate: '2024年1月1日',
+                    modifiedDate: '2024年1月1日',
+                    content: '# 文章加载失败\n\n无法加载文章内容，请检查文件是否存在或网络连接是否正常。'
+                };
+            }
+        }
+
         // 初始化所有功能
         function init() {
             createStars();
             smoothScroll();
             animateSkillBars();
-            animateTimelineItems();
             setupSearch();
-            setupArticleModal();
+            
+            // 加载博客文章
+            loadBlogPosts();
             
             // 滚动事件监听
             window.addEventListener('scroll', handleNavbarScroll);

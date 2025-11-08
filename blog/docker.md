@@ -1,0 +1,92 @@
+# Docker容器技术入门指南
+
+## 什么是Docker？
+
+Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+
+## Docker的核心概念
+
+### 1. 镜像(Image)
+Docker镜像是一个只读的模板，用于创建Docker容器。镜像可以包含完整的操作系统环境和应用程序。
+
+### 2. 容器(Container)
+容器是镜像的运行实例。可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。
+
+### 3. 仓库(Repository)
+仓库是集中存放镜像文件的场所。仓库分为公开仓库和私有仓库两种形式。
+
+## Docker的优势
+
+1. **快速交付**：Docker可以快速创建和部署应用，大大缩短开发周期。
+2. **环境一致性**：开发、测试、生产环境保持一致，减少"在我机器上可以运行"的问题。
+3. **资源利用率高**：容器不需要额外的操作系统开销，资源利用率高。
+4. **易于扩展**：可以轻松地扩展和缩减应用实例。
+
+## Docker常用命令
+
+### 镜像相关命令
+```bash
+# 搜索镜像
+docker search [镜像名称]
+
+# 拉取镜像
+docker pull [镜像名称]:[标签]
+
+# 查看本地镜像
+docker images
+
+# 删除镜像
+docker rmi [镜像ID]
+```
+
+### 容器相关命令
+```bash
+# 运行容器
+docker run [选项] [镜像名称] [命令]
+
+# 查看运行中的容器
+docker ps
+
+# 查看所有容器
+docker ps -a
+
+# 停止容器
+docker stop [容器ID]
+
+# 启动容器
+docker start [容器ID]
+
+# 删除容器
+docker rm [容器ID]
+```
+
+## Dockerfile基础
+
+Dockerfile是一个文本文件，包含了构建Docker镜像的所有指令。
+
+```dockerfile
+# 基础镜像
+FROM ubuntu:18.04
+
+# 维护者信息
+MAINTAINER yourname@example.com
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制文件
+COPY . /app
+
+# 安装依赖
+RUN apt-get update && apt-get install -y python3
+
+# 暴露端口
+EXPOSE 8080
+
+# 运行命令
+CMD ["python3", "app.py"]
+```
+
+## 总结
+
+Docker容器技术已经成为现代软件开发和部署的重要工具。通过使用Docker，开发团队可以更加高效地构建、交付和运行应用程序，同时确保环境的一致性和可移植性。
